@@ -90,54 +90,53 @@ graph TD
 ### AI-Powered CDN Configuration
 
 ```typescript
-interface CDNConfig {
-  region: 'bd-dhaka' | 'bd-ctg' | 'global';
-  optimization: {
-    ai: boolean;
-    compression: 'auto' | 'aggressive' | 'balanced';
-    caching: CachingStrategy;
-  };
-  security: SecurityConfig;
-}
+// pages/api/chat.js
 
-// Example Usage
-const config: CDNConfig = {
-  region: 'bd-dhaka',
-  optimization: {
-    ai: true,
-    compression: 'auto',
-    caching: {
-      strategy: 'intelligent',
-      ttl: 'adaptive'
+import { HfInference } from &quot;@huggingface/inference&quot;;
+
+export default async function handler(req, res) {
+  try {
+    // Initialize Hugging Face Inference client with your token
+    const client = new HfInference(&quot;hf_xxxxxxxxxxxxxxxxxxxxxxxx&quot;);
+
+    // Retrieve the user&#039;s message and selected model from the request body
+    const { userMessage, model } = req.body;
+    let output = &quot;&quot;;
+
+    // Select the appropriate model and provider based on input
+    const chosenModel = model === &quot;deepseek&quot; 
+      ? { name: &quot;deepseek-ai/DeepSeek-V3&quot;, provider: &quot;novita&quot; }
+      : { name: &quot;meta-llama/Llama-3.1-8B-Instruct&quot;, provider: &quot;nebius&quot; };
+
+    // Start streaming chat completion from Hugging Face
+    const stream = client.chatCompletionStream({
+      model: chosenModel.name,
+      messages: [{ role: &quot;user&quot;, content: userMessage }],
+      provider: chosenModel.provider,
+      max_tokens: 500,
+    });
+
+    // Set up Server-Sent Events (SSE) response headers
+    res.writeHead(200, {
+      &quot;Content-Type&quot;: &quot;text/event-stream&quot;,
+      &quot;Cache-Control&quot;: &quot;no-cache, no-transform&quot;,
+      Connection: &quot;keep-alive&quot;,
+    });
+
+    // Stream data chunks as they arrive
+    for await (const chunk of stream) {
+      if (chunk.choices &amp;&amp; chunk.choices.length &gt; 0) {
+        const newContent = chunk.choices[0].delta.content;
+        output += newContent;
+        res.write(`data: ${JSON.stringify({ token: newContent })}\n\n`);
+      }
     }
-  },
-  security: {
-    ddos: 'advanced',
-    ssl: 'managed',
-    firewall: 'smart'
+    res.end();
+  } catch (error) {
+    console.error(&quot;Error in chatCompletionStream:&quot;, error);
+    res.status(500).json({ error: &quot;Something went wrong.&quot; });
   }
-};
-```
-
----
-
-## 🏗 Architecture
-
-```mermaid
-flowchart TD
-    A[Client Request] --> B[Edge Location]
-    B -->|Bangladesh| C[BD Edge Servers]
-    B -->|Global| D[Global CDN]
-    C --> E[AI Optimization]
-    D --> E
-    E --> F[Content Delivery]
-
-    style A fill:#FFD21E
-    style B fill:#006A4E
-    style C fill:#FF9D00
-    style D fill:#6B7280
-    style E fill:#FFD21E
-    style F fill:#006A4E
+}
 ```
 
 ---
