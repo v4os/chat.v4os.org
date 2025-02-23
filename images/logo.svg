@@ -1,0 +1,105 @@
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Enhanced Definitions -->
+  <defs>
+    <!-- Complex Neural Grid -->
+    <pattern id="neural-grid-bd" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#006A4E" opacity="0.2"/>
+      <circle cx="20" cy="20" r="1" fill="#F42A41" opacity="0.15"/>
+      <line x1="2" y1="2" x2="38" y2="38" stroke="#FFD21E" stroke-width="0.3" opacity="0.2"/>
+      <line x1="38" y1="2" x2="2" y2="38" stroke="#FF9D00" stroke-width="0.3" opacity="0.2"/>
+    </pattern>
+    
+    <!-- Modern Gradients -->
+    <linearGradient id="tech-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD21E"/>
+      <stop offset="50%" style="stop-color:#FF9D00"/>
+      <stop offset="100%" style="stop-color:#6B7280"/>
+    </linearGradient>
+    
+    <!-- Pulse Animation -->
+    <radialGradient id="pulse" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#FFD21E;stop-opacity:0.3">
+        <animate attributeName="stop-opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" style="stop-color:#FF9D00;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background Layers -->
+  <rect width="400" height="200" fill="url(#neural-grid-bd)"/>
+  <rect width="400" height="200" fill="url(#pulse)" opacity="0.3"/>
+  
+  <!-- Digital Circuit Paths -->
+  <g stroke="#006A4E" stroke-width="0.5" opacity="0.3">
+    <path d="M0 50 Q100 25 200 50 T400 50">
+      <animate attributeName="d" 
+               values="M0 50 Q100 25 200 50 T400 50;M0 55 Q100 30 200 55 T400 55;M0 50 Q100 25 200 50 T400 50"
+               dur="4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0 150 Q100 175 200 150 T400 150">
+      <animate attributeName="d"
+               values="M0 150 Q100 175 200 150 T400 150;M0 145 Q100 170 200 145 T400 145;M0 150 Q100 175 200 150 T400 150"
+               dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Main Logo Group -->
+  <g transform="translate(100, 40)">
+    <!-- V -->
+    <path d="M0 0 L40 120 L80 0" 
+          fill="none" 
+          stroke="url(#tech-gradient)" 
+          stroke-width="8"
+          stroke-linecap="round">
+      <animate attributeName="stroke-width" 
+               values="8;10;8" 
+               dur="2s" 
+               repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Δ -->
+    <path d="M100 120 L140 0 L180 120 Z" 
+          fill="#FF9D00" 
+          opacity="0.9">
+      <animate attributeName="opacity" 
+               values="0.9;1;0.9" 
+               dur="2s" 
+               repeatCount="indefinite"/>
+    </path>
+    
+    <!-- O -->
+    <circle cx="220" cy="60" r="60" 
+            fill="none" 
+            stroke="#6B7280" 
+            stroke-width="8"
+            stroke-dasharray="377">
+      <animate attributeName="stroke-dashoffset" 
+               values="377;0;377" 
+               dur="3s" 
+               repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- S -->
+    <path d="M280 20 C310 20 330 40 330 60 C330 80 290 90 290 100 C290 110 310 120 340 120" 
+          fill="none" 
+          stroke="url(#tech-gradient)" 
+          stroke-width="8" 
+          stroke-linecap="round">
+      <animate attributeName="stroke-width" 
+               values="8;10;8" 
+               dur="2.5s" 
+               repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- BD Tech Hub Indicator -->
+  <g transform="translate(200, 180)">
+    <text text-anchor="middle" 
+          font-family="Arial, sans-serif" 
+          font-size="8" 
+          fill="#6B7280"
+          opacity="0.8">
+      Innovating from Bangladesh's Silicon Valley
+    </text>
+  </g>
+</svg>
