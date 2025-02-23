@@ -13,7 +13,7 @@
 <div align="center">
   <h3>Part of Bangladesh's Digital Innovation Revolution</h3>
   <p>🌐 <a href="http://chat.v4os.org">chat.v4os.org</a> | 📧 <a href="mailto:services@v4os.org">services@v4os.org</a></p>
-  <p>Powered by:</p>
+  <p>Powered</p>
   <a href="https://huggingface.co"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face Logo" width="100"></a>
 </div>
 
