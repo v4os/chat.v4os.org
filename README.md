@@ -15,7 +15,6 @@
   <p>🌐 <a href="http://chat.v4os.org">chat.v4os.org</a> | 📧 <a href="mailto:services@v4os.org">services@v4os.org</a></p>
   <p>Powered by:</p>
   <a href="https://huggingface.co"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face Logo" width="100"></a>
-  <a href="https://deepseek.ai"><img src="https://www.deepseek.com/_next/image?url=https%3A%2F%2Fcdn.deepseek.com%2Flogo.png&w=828&q=75" alt="DeepSeek Logo"></a>
 </div>
 
 ---
