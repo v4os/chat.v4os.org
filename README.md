@@ -2,7 +2,10 @@
   <a href="https://chat.v4os.org">
     <img src="https://raw.githubusercontent.com/v4os/chat.v4os.org/259838493b40e668ee838cc8cd247c6115df9484/images/logo.svg" alt="Chat.V4OS Logo" width="200">
   </a>
+</div>
+
 ---
+
 [![Made in Bangladesh](https://img.shields.io/badge/Made_in-Bangladesh-006A4E?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgo=)](https://digitalbangladesh.gov.bd)
 [![DeepSeek Integration](https://img.shields.io/badge/DeepSeek-V3-FF9D00?style=for-the-badge)](https://deepseek.ai)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging_Face-Enabled-FFD21E?style=for-the-badge)](https://huggingface.co)
@@ -12,12 +15,11 @@
 <div align="center">
   <h3>Part of Bangladesh's Digital Innovation Revolution</h3>
   <p>🌐 <a href="http://chat.v4os.org">chat.v4os.org</a> | 📧 <a href="mailto:services@v4os.org">services@v4os.org</a></p>
-  <p>Powered</p>
+  <p>Powered by</p>
   <a href="https://huggingface.co"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face Logo" width="100"></a>
 </div>
 
 ---
-
 
 V4OS is an innovative AI-powered platform designed to revolutionize UI creation for digital projects. It leverages cutting-edge generative AI to instantly produce modern, production-ready interfaces for various applications, including chat systems, crypto dashboards, and appointment schedulers.
 
@@ -52,13 +54,13 @@ graph TD
 
 ### Performance Metrics
 
-| **Metric** | **Performance** |
-|------------|------------------|
-| Global Response Time | < 50ms |
-| Availability | 99.99% |
-| Edge Points | 150+ |
-| Bandwidth | Unlimited |
-| SSL/TLS | Auto-managed |
+| **Metric**         | **Performance** |
+|--------------------|------------------|
+| Global Response Time | < 50ms          |
+| Availability        | 99.99%           |
+| Edge Points         | 150+             |
+| Bandwidth           | Unlimited        |
+| SSL/TLS             | Auto-managed     |
 
 ---
 
@@ -69,40 +71,40 @@ graph TD
 ```typescript
 // pages/api/chat.js
 
-import { HfInference } from &quot;@huggingface/inference&quot;;
+import { HfInference } from "@huggingface/inference";
 
 export default async function handler(req, res) {
   try {
     // Initialize Hugging Face Inference client with your token
-    const client = new HfInference(&quot;hf_xxxxxxxxxxxxxxxxxxxxxxxx&quot;);
+    const client = new HfInference("hf_xxxxxxxxxxxxxxxxxxxxxxxx");
 
-    // Retrieve the user&#039;s message and selected model from the request body
+    // Retrieve the user's message and selected model from the request body
     const { userMessage, model } = req.body;
-    let output = &quot;&quot;;
+    let output = "";
 
     // Select the appropriate model and provider based on input
-    const chosenModel = model === &quot;deepseek&quot; 
-      ? { name: &quot;deepseek-ai/DeepSeek-V3&quot;, provider: &quot;novita&quot; }
-      : { name: &quot;meta-llama/Llama-3.1-8B-Instruct&quot;, provider: &quot;nebius&quot; };
+    const chosenModel = model === "deepseek"
+      ? { name: "deepseek-ai/DeepSeek-V3", provider: "novita" }
+      : { name: "meta-llama/Llama-3.1-8B-Instruct", provider: "nebius" };
 
     // Start streaming chat completion from Hugging Face
     const stream = client.chatCompletionStream({
       model: chosenModel.name,
-      messages: [{ role: &quot;user&quot;, content: userMessage }],
+      messages: [{ role: "user", content: userMessage }],
       provider: chosenModel.provider,
       max_tokens: 500,
     });
 
     // Set up Server-Sent Events (SSE) response headers
     res.writeHead(200, {
-      &quot;Content-Type&quot;: &quot;text/event-stream&quot;,
-      &quot;Cache-Control&quot;: &quot;no-cache, no-transform&quot;,
-      Connection: &quot;keep-alive&quot;,
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
     });
 
     // Stream data chunks as they arrive
     for await (const chunk of stream) {
-      if (chunk.choices &amp;&amp; chunk.choices.length &gt; 0) {
+      if (chunk.choices && chunk.choices.length > 0) {
         const newContent = chunk.choices[0].delta.content;
         output += newContent;
         res.write(`data: ${JSON.stringify({ token: newContent })}\n\n`);
@@ -110,8 +112,8 @@ export default async function handler(req, res) {
     }
     res.end();
   } catch (error) {
-    console.error(&quot;Error in chatCompletionStream:&quot;, error);
-    res.status(500).json({ error: &quot;Something went wrong.&quot; });
+    console.error("Error in chatCompletionStream:", error);
+    res.status(500).json({ error: "Something went wrong." });
   }
 }
 ```
@@ -134,7 +136,7 @@ export default async function handler(req, res) {
 bun install && bun run dev
 
 # Start local development
-bun run deploy:bd 
+bun run deploy:bd
 
 # Build for production
 bun run build
@@ -206,5 +208,3 @@ Created with ❤️ by [Likhon Sheikh](https://likhonsheikh.com/)
 © 2025 VΔOS (Value Apex Operating System), Inc. All rights reserved.
 
 </div>
-
----
