@@ -34,24 +34,6 @@ V4OS is an innovative AI-powered platform designed to revolutionize UI creation 
 
 ---
 
-## 🌟 Core Technologies
-
-### Content Delivery Excellence
-
-```mermaid
-graph TD
-    A[Global Edge Network] -->|Ultra-Fast| B[Load Balancing]
-    B -->|Smart Routing| C[Content Optimization]
-    C -->|AI-Powered| D[Delivery]
-    D -->|Analytics| E[Performance Metrics]
-
-    style A fill:#006A4E,color:#fff
-    style B fill:#FF9D00,color:#fff
-    style C fill:#FFD21E,color:#000
-    style D fill:#6B7280,color:#fff
-    style E fill:#006A4E,color:#fff
-```
-
 ### Performance Metrics
 
 | **Metric**         | **Performance** |
