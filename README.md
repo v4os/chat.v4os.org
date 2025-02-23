@@ -155,15 +155,15 @@ flowchart TD
 
 ```bash
 # Install dependencies
-bun install
+bun install && bun run dev
 
 # Start local development
-bun run dev
+bun run deploy:bd 
 
 # Build for production
 bun run build
 
-# Deploy to BD edge network
+# Deploy to DEV edge network
 bun run deploy:bd
 ```
 
