@@ -9,7 +9,6 @@
 [![Made in Bangladesh](https://img.shields.io/badge/Made_in-Bangladesh-006A4E?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgo=)](https://digitalbangladesh.gov.bd)
 [![DeepSeek Integration](https://img.shields.io/badge/DeepSeek-V3-FF9D00?style=for-the-badge)](https://deepseek.ai)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging_Face-Enabled-FFD21E?style=for-the-badge)](https://huggingface.co)
-[![Tech Stack](https://img.shields.io/badge/Tech_Stack-Modern-6B7280?style=for-the-badge&logo=next.js)](https://v4os.org)
 [![Follow](https://img.shields.io/github/followers/v4os?style=for-the-badge&label=Follow&logo=github)](https://github.com/v4os)
 
 <div align="center">
